@@ -16,25 +16,24 @@ jobs:
       - name: Checkout 
         uses: actions/checkout@v4
       - run: echo "HELLO WORLD ${{ github.event_name }} on ${{github.ref_name}}"
-      - run: |
-          ls -a
-          cd ./backend
-          echo "ls command run successfully"
-          docker build -t backend-image .
-          cd ../frontend
-          docker build -t frontend-image .
-          echo "image build complete"
+
       - name: docker hub login
         uses: docker/login-action@v4
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - run: echo "login set successfull"
-      - name: build and push to docker hub
+      - name: build and push backend to docker hub 
         uses: docker/build-push-action@v7
         with:
+          context: ./backend
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/backend-image:latest
 
-          
+      - name: build and push frontend to docker hub
+        uses: docker/build-push-action@v7
+        with: 
+          context: ./frontend
+          push: true
+          tags: ${{ env.DOCKERHUB_USERNAME }}/frontend-image:latest
 
