@@ -20,5 +20,5 @@ jobs:
           echo "ls command run successfully"
           docker build -t backend-image .
           cd ../frontend
-          docker build -t frontend-image
+          docker build -t frontend-image .
           echo "image build complete"
