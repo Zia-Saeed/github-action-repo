@@ -18,5 +18,5 @@ jobs:
           ls -a
           cd ./backend
           echo "ls command run successfully"
-          docker build -f ./backend/Dockerfile -t backend-image .
+          docker build -t backend-image .
           echo "image build complete"
