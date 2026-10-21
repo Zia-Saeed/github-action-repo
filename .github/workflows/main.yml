@@ -48,6 +48,8 @@ jobs:
             docker pull ziasaeeditgeek/backend-image
             docker pull ziasaeeditgeek/frontend-image
             cd /home/ubuntu/pipeline-compose-file && docker compose build --no-cache 
+            docker compose pull 
+            echo "docker image pull complete"
             docker compose up -d
             echo "image are running successfully "
 
