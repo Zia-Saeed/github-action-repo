@@ -1,4 +1,4 @@
-name: CI
+name: Ci
 
 
 on:
@@ -6,11 +6,12 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+
+
 jobs:
-  build-image:
+  ci-flow:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Triggered by ${{ github.event_name }} on ${{ github.ref_name }}"
+      - run: ECHO "HELLO WORLD ${{ github.event_name }} on ${{github.ref_name}}"
       - run: |
-          echo "Runner OS: $RUNNER_OS"
-          echo "Commit : $GITHUB_SHA"
+          docker build -f ./backend/Dockerfile -t .
