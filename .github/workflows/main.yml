@@ -12,6 +12,6 @@ jobs:
   ci-flow:
     runs-on: ubuntu-latest
     steps:
-      - run: ECHO "HELLO WORLD ${{ github.event_name }} on ${{github.ref_name}}"
+      - run: echo "HELLO WORLD ${{ github.event_name }} on ${{github.ref_name}}"
       - run: |
           docker build -f ./backend/Dockerfile -t .
