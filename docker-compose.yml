@@ -1,6 +1,6 @@
 services:
   backend:
-    build: ./backend
+    image: ziasaeeditgeek/backend-image
     container_name: todo-backend
     environment:
       - PORT=5000
@@ -8,14 +8,13 @@ services:
     volumes:
       - todo-data:/app/data
     ports:
-      - "5000:5000"   # optional: expose API directly
+      - "5000:5330"   # optional: expose API directly
     restart: unless-stopped
 
   frontend:
-    build: ./frontend
-    container_name: todo-frontend
+    image: ziasaeeditgeek/frontend-image
     ports:
-      - "8080:80"
+      - "8080:3450"
     depends_on:
       - backend
     restart: unless-stopped

@@ -36,4 +36,9 @@ jobs:
           context: ./frontend
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend-image:latest
-
+      - name: deploy docker image on remote server
+        uses: favware/ssh-remote-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_KEY }}
