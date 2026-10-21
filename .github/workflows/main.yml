@@ -14,5 +14,6 @@ jobs:
     steps:
       - run: echo "HELLO WORLD ${{ github.event_name }} on ${{github.ref_name}}"
       - run: |
+          ls -a
           docker build -f ./backend/Dockerfile -t backend-image .
           echo "image build complete"
