@@ -15,5 +15,6 @@ jobs:
       - run: echo "HELLO WORLD ${{ github.event_name }} on ${{github.ref_name}}"
       - run: |
           ls -a
+          echo "ls command run successfully"
           docker build -f ./backend/Dockerfile -t backend-image .
           echo "image build complete"
