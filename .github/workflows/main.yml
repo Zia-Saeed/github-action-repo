@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend-image:latest
       - name: deploy docker image on remote server
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
