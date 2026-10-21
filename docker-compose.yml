@@ -8,13 +8,13 @@ services:
     volumes:
       - todo-data:/app/data
     ports:
-      - "5000:5330"   # optional: expose API directly
+      - "5310:5000"   # optional: expose API directly
     restart: unless-stopped
 
   frontend:
     image: ziasaeeditgeek/frontend-image
     ports:
-      - "8080:3450"
+      - "3434:80"
     depends_on:
       - backend
     restart: unless-stopped
