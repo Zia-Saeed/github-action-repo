@@ -37,8 +37,17 @@ jobs:
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend-image:latest
       - name: deploy docker image on remote server
-        uses: favware/ssh-remote-action@v1
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.ECS_USER }}
           key: ${{ secrets.SSH_KEY }}
+          script: |
+            set -e 
+            docker pull ziasaeeditgeek/backend-image
+            docker pull ziasaeeditgeek/frontend-image
+            cd /home/ubuntu/pipeline-compose-file && docker compose build --no-cache 
+            docker compose up -d
+            echo "image are running successfully "
+
