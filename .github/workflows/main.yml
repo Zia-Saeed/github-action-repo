@@ -10,7 +10,7 @@ jobs:
   build-image:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Triggered by ${{github.event_name}} on {{github.ref_name}}"
+      - run: echo "Triggered by ${{ github.event_name }} on ${{ github.ref_name }}"
       - run: |
           echo "Runner OS: $RUNNER_OS"
           echo "Commit : $GITHUB_SHA"
