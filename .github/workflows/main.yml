@@ -60,9 +60,9 @@ jobs:
             do 
               HTTP_CODE=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 2 \ 
               "http://127.0.0.1:3434" || true)
-              if ["$HTTP_CODE" == "200"] 
-                then 
+              if ["$HTTP_CODE" == "200"]; then 
                   echo "health check passed"
                   break
+              fi
             done
 
